@@ -16,7 +16,7 @@ Set-up instructions
     2. Run the following command to create and activate the working environment
     ```bash
     conda env create -f environment.yml
-    conda activate BMEN663
+    conda activate bmen663
     ```
 2. Install the [python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) plugin.
 3. Install the [jupyter](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter) plugin.
