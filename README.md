@@ -3,9 +3,6 @@ Repository for in-class demos for BMEN 663.
 The repository is divided into multiple folders for each demo.
 
 Set-up instructions
-- All demos require the following software and packages:
-    - [VS code](https://code.visualstudio.com/)
-    - 
 - Folders starting with `embedded` should follow the [embeded programming instructions](#embedded-programing-instructions)
 - Folders starting with `python` should follow the [python instructions](#python-instructions)
 
@@ -18,6 +15,7 @@ Set-up instructions
     conda env create -f environment.yml
     conda activate bmen663
     ```
+2. Install [VS code](https://code.visualstudio.com/)
 2. Install the [python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) plugin.
 3. Install the [jupyter](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter) plugin.
 4. Run the sections of the desired Jupyter Notebook.
