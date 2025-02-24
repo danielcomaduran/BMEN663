@@ -8,6 +8,7 @@ Set-up instructions
 
 
 ## [Python instructions](#python-instructions)
+1. Install the latest version of [VS code](https://code.visualstudio.com/)
 1. Install the latest [miniconda](https://docs.anaconda.com/miniconda/install/) version.
     1. Open the `miniconda terminal`, navigate to the path of this repository
     2. Run the following command to create and activate the working environment
