@@ -1,22 +1,17 @@
-#include "potentiometer.h"
+#include "thermometer.h"
 #include <Arduino.h>
-
-int threshold = 512; // ADC threshold value for potentiometer
 
 void setup() 
 {
     Serial.begin(9600);
-    setupPins();
+    setupTemperature();
 }
 
 void loop() 
 {
-    // Read and print potentiometer value
-    int potValue = readPotentiometer();
-    Serial.println(potValue);
-
-    // Turn on LED if potentiometer value passes threshold
-    checkThresholdAndControlLED(potValue, threshold);
+    // Read and plot temperature value
+    float temperature = readTemperature();
+    plotTemperature(temperature);
 
     // Small delay for better readability in the Serial Plotter
     waitMillis(100);
