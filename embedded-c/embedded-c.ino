@@ -1,18 +1,18 @@
 #include "thermometer.h"
 #include <Arduino.h>
 
-void setup() 
+void setup()
 {
     Serial.begin(9600);
-    setupTemperature();
+    setupTemperatureSensor();
 }
 
-void loop() 
+void loop()
 {
     // Read and plot temperature value
-    float temperature = readTemperature();
-    plotTemperature(temperature);
+    float temperatureC = readTemperature();
+    plotTemperature(temperatureC);
 
     // Small delay for better readability in the Serial Plotter
-    waitMillis(100);
+    waitMillis(300);
 }

@@ -7,20 +7,23 @@
 // Analog pin connected to the thermistor
 #define TEMP_PIN A0
 
+// Plot limits in Celsius
+#define LOWER_TEMP 0
+#define UPPER_TEMP 30
+
 // Constants for thermistor calculations
-#define TEMP_SAMPLES 10        // Number of samples for averaging
-#define REFERENCE_RESISTOR 10000.0  // 10k reference resistor
-#define THERMISTOR_B 3950.0    // B value of the thermistor
-#define THERMISTOR_T0 298.15   // 25°C in Kelvin
-#define THERMISTOR_R0 10000.0  // Resistance at 25°C
+#define TEMP_SAMPLES 10 // Number of samples for averaging
+#define K_TO_C 273.15   // Kelvin to Celsius conversion
+
+// - Steinhart-Hart coefficients
+#define SH_A 0.001129148
+#define SH_B 0.000234125
+#define SH_C 0.0000000876741
 
 /**
- * @brief Initializes the serial communication.
- *
- * This function should be called in the setup() function of the main program.
- * It initializes the serial communication at 9600 baud rate.
+ * @brief Initializes the temperature sensor pin as input
  */
-void setupTemperature();
+void setupTemperatureSensor();
 
 /**
  * @brief Reads the temperature sensor and returns the temperature in Celsius.
