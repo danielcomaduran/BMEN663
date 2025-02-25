@@ -11,8 +11,11 @@ void PulseMeter::setup()
 }
 
 PulseMeter::PulseMeter(int sensor, int led)
-    : sensorPin(sensor), ledPin(led), threshold(512), lastBeatTime(0), beatCount(0)
 {
+    sensorPin = sensor;
+    ledPin = led;
+    threshold = threshold;
+
     // Initialize arrays for running average
     for (int i = 0; i < BUFFER_SIZE; i++)
     {
@@ -23,12 +26,13 @@ PulseMeter::PulseMeter(int sensor, int led)
 void PulseMeter::update()
 {
     static unsigned long lastSampleTime = 0;
+    static unsigned long lastThresholdUpdate = 0;
+    unsigned long currentTime = millis();
+
     static bool isPeak = false;
     static int sampleIndex = 0;
-    static int lastThresholdUpdate = 0;
     static int lastRawValue = 0;
     static int avgValue = 512;
-    unsigned long currentTime = millis();
 
     if (currentTime - lastSampleTime >= SAMPLE_PERIOD)
     {
@@ -37,63 +41,48 @@ void PulseMeter::update()
         // Read raw value
         int rawValue = analogRead(sensorPin);
         
-        // Store raw value instead of difference
+        // Store raw value in buffer
         samples[sampleIndex] = rawValue;
         sampleIndex = (sampleIndex + 1) % BUFFER_SIZE;
 
         // Update threshold less frequently (every 1000ms)
         if (currentTime - lastThresholdUpdate >= 1000) {
+            lastThresholdUpdate = currentTime;
             long sum = 0;
             int max_value = 0;
             for (int i = 0; i < BUFFER_SIZE; i++) {
                 sum += samples[i];
                 max_value = max(max_value, samples[i]);
             }
-            
-            // ...existing threshold calculation code...
+
             avgValue = sum / BUFFER_SIZE;  // Update static avgValue
             threshold = avgValue + ((max_value - avgValue) * 0.6);
         }
 
         // Print debug values
-        Serial.print("Max:1024 , Min:0, ");
-        Serial.print("raw:");
-        Serial.print(rawValue);
-        Serial.print(",avg:");
-        Serial.print(avgValue);
-        Serial.print(",thr:");
-        Serial.print(threshold);
-        Serial.print(",pk:");
-        Serial.println(isPeak ? "900":"100");
+        printValues(avgValue, threshold, isPeak);
 
-        // Detect peaks
-        if (rawValue > threshold && !isPeak &&
-            (currentTime - lastBeatTime) > MIN_BEAT_INTERVAL)
+        // Check for a new heartbeat
+        bool validInterval = (currentTime - lastBeatTime) > MIN_BEAT_INTERVAL;
+        if (rawValue > threshold && !isPeak && validInterval)
         {
             isPeak = true;
-            beatCount++;
             lastBeatTime = currentTime;
         }
         else if (rawValue <= threshold && isPeak)
         {
             isPeak = false;
         }
-
-        if (currentTime - lastBeatTime >= BPM_SAMPLE_PERIOD)
-        {
-            calculateAndPrintBPM();
-            beatCount = 0;
-            lastBeatTime = currentTime;
-        }
     }
 }
 
-void PulseMeter::calculateAndPrintBPM()
+void PulseMeter::printValues(int avgValue, int threshold, bool isPeak)
 {
-    // Calculate BPM based on beat count over the sample period
-    float beatsPerMinute = (float)beatCount * (60000.0f / BPM_SAMPLE_PERIOD);
-
-    // Print BPM value
-    Serial.print("BPM: ");
-    Serial.println(beatsPerMinute);
+    Serial.print("Max:1024, Min:0, ");
+    Serial.print(", Avg:");
+    Serial.print(avgValue);
+    Serial.print(", Threshold:");
+    Serial.print(threshold);
+    Serial.print(", Peak:");
+    Serial.println(isPeak ? "900" : "100");
 }
