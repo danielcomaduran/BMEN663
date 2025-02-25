@@ -1,16 +1,17 @@
-#include "potentiometer.h"
+#include "pulsemeter.h"
 
-int analogPin = A0;     // Analog pin connected to the potentiometer
-int ledPin = 13;        // Digital pin connected to the built-in LED
-int threshold = 512;    // Threshold value for the potentiometer
+// Create pulse sensor object
+const int SENSOR_PIN = A1;
+const int LED_PIN = 2;
+PulseMeter pulseMeter(SENSOR_PIN, LED_PIN);
 
-Potentiometer pot(A0, 13, 512);
-
-void setup() {
-    pot.begin();
+void setup()
+{
+    Serial.begin(9600);
+    pulseMeter.setup();
 }
 
-void loop() {
-    pot.update();
-    delay(100);
+void loop()
+{
+    pulseMeter.update();
 }
