@@ -6,19 +6,29 @@ dependencies:
   - bzip2=1.0.8
   - ca-certificates=2024.12.31
   - libffi=3.4.4
+  - liblzma=5.6.4
+  - liblzma-devel=5.6.4
+  - libsqlite=3.45.3
+  - libzlib=1.2.13
   - openssl=3.0.15
-  - pip=25.0
+  - pip=25.0.1
   - python=3.10.16
   - setuptools=75.8.0
   - sqlite=3.45.3
   - tk=8.6.14
+  - ucrt=10.0.22621.0
   - vc=14.42
+  - vc14_runtime=14.42.34433
   - vs2015_runtime=14.42.34433
   - wheel=0.45.1
   - xz=5.6.4
+  - xz-tools=5.6.4
   - zlib=1.2.13
   - pip:
       - asttokens==3.0.0
+      - async-timeout==4.0.3
+      - bleak==0.22.3
+      - bleak-winrt==1.2.0
       - certifi==2025.1.31
       - charset-normalizer==3.4.1
       - colorama==0.4.6
@@ -31,6 +41,7 @@ dependencies:
       - executing==2.2.0
       - fonttools==4.56.0
       - idna==3.10
+      - idun-guardian-sdk==0.1.19
       - ipykernel==6.29.5
       - ipython==8.32.0
       - jedi==0.19.2
@@ -54,12 +65,16 @@ dependencies:
       - prompt-toolkit==3.0.50
       - psutil==7.0.0
       - pure-eval==0.2.3
+      - pycryptodome==3.22.0
       - pygments==2.19.1
+      - pylsl==1.17.6
       - pyparsing==3.2.1
       - pyqt6==6.8.1
       - pyqt6-qt6==6.8.2
       - pyqt6-sip==13.10.0
+      - pyqtgraph==0.13.7
       - python-dateutil==2.9.0.post0
+      - python-dotenv==1.1.0
       - pytz==2025.1
       - pywin32==308
       - pyzmq==26.2.1
@@ -74,4 +89,5 @@ dependencies:
       - tzdata==2025.1
       - urllib3==2.3.0
       - wcwidth==0.2.13
+      - websockets==12.0
 prefix: C:\Users\danie\miniconda3\envs\bmen663
