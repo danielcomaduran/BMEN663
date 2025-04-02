@@ -11,6 +11,7 @@ WINDOW_SIZE_SEC = 2  # seconds
 PLOT_HISTORY_SEC = 10  # seconds
 CHANNEL_INDEX = 0  # first channel
 
+EEG_RANGE = 500  # Range of EEG measurements +/- uV
 ALPHA_BAND = (8, 12)
 UPDATE_INTERVAL_MS = 100  # plot and processing update interval
 
@@ -54,7 +55,7 @@ win.resize(1000, 600)
 p1 = win.addPlot(title="EEG Signal (Single Channel)")
 p1.setLabel('left', 'Amplitude', units='uV')
 p1.setLabel('bottom', 'Time', units='s')
-p1.setYRange(-500, 500)
+p1.setYRange(-EEG_RANGE, EEG_RANGE)
 p1.setXRange(-PLOT_HISTORY_SEC, 0)
 
 eeg_curve = p1.plot()
