@@ -29,7 +29,6 @@ dependencies:
       - async-timeout==4.0.3
       - bleak==0.22.3
       - bleak-winrt==1.2.0
-      - certifi==2025.1.31
       - charset-normalizer==3.4.1
       - colorama==0.4.6
       - comm==0.2.2
@@ -87,7 +86,6 @@ dependencies:
       - traitlets==5.14.3
       - typing-extensions==4.12.2
       - tzdata==2025.1
-      - urllib3==2.3.0
       - wcwidth==0.2.13
       - websockets==12.0
 prefix: C:\Users\danie\miniconda3\envs\bmen663
