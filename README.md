@@ -16,8 +16,8 @@ The repository is divided into multiple folders for each demo.
     conda activate bmen663
     ```
 2. Install the latest version of [VS code](https://code.visualstudio.com/)
-    1. Install the [python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) plugin
-    2. Install the [jupyter](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter) plugin
+    1. Install the [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) plugin
+    2. Install the [Jupyter](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter) plugin
 3. In VS Code, open the folder of the repository (`Ctrl + K, Ctrl + O`)
     1. Open desired desired Jupyter Notebook
     2. Select the `bmen663` kernel at the top right of the Notebook
