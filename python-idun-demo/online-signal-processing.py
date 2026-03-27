@@ -11,12 +11,12 @@ WINDOW_SIZE_SEC = 2  # seconds
 PLOT_HISTORY_SEC = 10  # seconds
 CHANNEL_INDEX = 0  # first channel
 
-EEG_RANGE = 500  # Range of EEG measurements +/- uV
 ALPHA_BAND = (8, 12)
 UPDATE_INTERVAL_MS = 100  # plot and processing update interval
 
-PLOT_HISTORY_SEC = 10  # Display last 10 seconds
+PLOT_HISTORY_SEC = 10   # Display last 10 seconds
 WINDOW_SIZE_SEC = 2     # 2-second window
+AMPLITUDE = 800         # Adjusted amplitude for better visualization [mV]
 
 THRESHOLD_ALPHA = 0.4
 
@@ -55,7 +55,7 @@ win.resize(1000, 600)
 p1 = win.addPlot(title="EEG Signal (Single Channel)")
 p1.setLabel('left', 'Amplitude', units='uV')
 p1.setLabel('bottom', 'Time', units='s')
-p1.setYRange(-EEG_RANGE, EEG_RANGE)
+p1.setYRange(-AMPLITUDE, AMPLITUDE)
 p1.setXRange(-PLOT_HISTORY_SEC, 0)
 
 eeg_curve = p1.plot()
@@ -76,11 +76,7 @@ p2.setYRange(0, 1)
 p2.setXRange(-PLOT_HISTORY_SEC, 0)
 
 # Add threshold line to alpha power plot
-threshold_line = pg.InfiniteLine(
-    pos=THRESHOLD_ALPHA, 
-    angle=0, 
-    pen=pg.mkPen('r', width=2, style=QtCore.Qt.PenStyle.DashLine)  # Fixed dash line style
-)
+threshold_line = pg.InfiniteLine(pos=THRESHOLD_ALPHA, angle=0, pen=pg.mkPen('r', width=2, style=QtCore.Qt.DashLine))
 p2.addItem(threshold_line)
 
 # Status label: Eyes Open / Closed
