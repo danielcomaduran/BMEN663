@@ -3,9 +3,6 @@ from pylsl import StreamInfo, StreamOutlet
 
 from idun_guardian_sdk import GuardianClient
 
-# my_device_id = "E5-1E-FD-F5-15-26"
-my_device_id = "F6-38-89-19-6D-56"
-
 RECORDING_TIMER: int = 60 * 60 * 2  # 2 hours
 my_api_key = ""
 
